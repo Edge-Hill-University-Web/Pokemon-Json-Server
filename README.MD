@@ -21,7 +21,7 @@ This project requires:
     EXPOSE 80
     ADD <URL_TO_JSON_DATA> /data/
     ADD <URL_TO_INDEX_PAGE> /data/public/
-    ENTRYPOINT ["json-server", "--watch", "/data/db.json", "--port", "80", "--read-only"]
+    ENTRYPOINT ["json-server", "/data/<filename>.json", "--port", "80"]
     ```
 
 * ``index.html`` - Serves as an index page for the server.
