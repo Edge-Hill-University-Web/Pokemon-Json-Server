@@ -1,4 +1,5 @@
 {
+    "/pokemon/": "?=", 
     "/pokemon/id/:id": "/pokemon?id=:id",
     "/pokemon/type/:type": "pokemon?type_like=:type"
 }
