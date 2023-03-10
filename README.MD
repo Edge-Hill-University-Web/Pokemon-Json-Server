@@ -26,7 +26,11 @@ This project requires:
 
 * ``index.html`` - Serves as an index page for the server.
 
-* ``data.json`` - PokémonGo data represented in JSON format: It contains a **list** of ``pokemon`` represented as objects See below for an example. 
+* ``data.json`` - PokémonGo data represented in JSON format: It contains a **list** of ``pokemon`` represented as objects with various attributes. 
+
+  
+
+   **See below for an example.** 
 
   ```json
   {
@@ -72,7 +76,7 @@ This project requires:
   }
   ```
 
-  **Example:** 
+  **Example: ** Bulbasuar  
 
   <div style="border: 1px solid #ccc!important; display: flex; justify-content: left; align-items: center;"><img src="http://www.serebii.net/pokemongo/pokemon/001.png"><p><b>Pokédex Entry</b>:  1,</br> <b>Name</b>: Bulbasaur,</br><b>Type</b>: Grass and Poison</p> </div>
 
@@ -114,13 +118,67 @@ Upon success you should see output in your terminal windows like this...
 
 ## Usage
 
-Some example of queries include...
-
-​	
+The following showcases some of the functionality of the Pokédex.
 
 
 
-**<field>_like** search: Used to search if a specific field contains a specific value
+### Routes & URL Queries
+
+Some example of URL based queries include:
+
+#### Full Text Search
+
+**?q=**: Full text search
+
+- **Any pokemon object that contains the following string `Mew`**: `http://localhost/pokemon?Mew` will return the pokemon Mew and Mewtwo.
+
+  
+
+- **Any pokemon object that contains the following string `Ice`** `http://localhost/pokemon?q=Ice` will return the who's type and weakness contain ICE.
+
+
+
+#### Search an Attribute
+
+**?`<attribute>`=** search for something in a specific attribute that is equal to the value
+
+- **Search based on Id**: `http://localhost/pokemon?id=151` will return the pokemon Mew
+- **Search based on Type**: `http://localhost/pokemon?Type=Bug` will return whos type is exclusively `Bug`
+
+
+
+#### Contains
+
+This can accept regular expressions too!
+
+**?`<attribute>`_like** search: Used to search if a specific field contains a specific value
 
 - **Search for Pokemon based on their type**: `http://localhost/pokemon?type_like=Ghost` will return all pokemon where their `type`contains `ghost`
 - **Search for pokemon based on a weakness** : ``http://localhost/pokemon?weaknesses_like=Ghost``
+
+
+
+#### Range
+
+**?`<attribute>`_gte=**
+
+- **Search for Pokemon based on their spawn chance of greater than or equal to 0.5**: `http://localhost/pokemon?spawn_chance_gte=0.5`
+
+**?`<attribute>`_lte=**
+
+- **Search for Pokemon based on their spawn chance of less than or equal to 0.1**: `http://localhost/pokemon?spawn_chance_lte=0.1`
+
+
+
+#### Filtering and Concatination 
+
+You can use any combination of the above to filter your data using the concatination operator `&`.
+
+- **Filter Pokemon based on an exclusive type `Bug`** and `spawn_chance` greater than or eqal to 3: `http://localhost/pokemon?type=Bug&spawn_chance_gte=3`
+
+  
+
+- **Filter Pokemon based on an non exclusive type `Physic`** and `spawn_chance` greater than or eqal to 3: `http://localhost/pokemon?type_like=Psychic&spawn_chance_gte=3`
+
+
+

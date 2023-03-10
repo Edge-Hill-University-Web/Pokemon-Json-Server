@@ -1,0 +1,5 @@
+{
+    "/api/*": "/$1",
+    "/pokemon/:id": "/pokemon?id=:id",
+    "/pokemon/:type": "pokemon?type_like=:type"
+}
