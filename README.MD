@@ -26,6 +26,8 @@ This project requires:
 
 * ``index.html`` - Serves as an index page for the server.
 
+* `routes.json` - Defines the routing of the REST API.
+
 * ``data.json`` - PokémonGo data represented in JSON format: It contains a **list** of ``pokemon`` represented as objects with various attributes. 
 
   
@@ -116,15 +118,27 @@ Upon success you should see output in your terminal windows like this...
 
 
 
+
+
+## HTTP Methods
+
+The Pokédex supports the following HTTP Methods
+
+ `GET`, `POST`, `PUSH`, `PATCH`,  `UPDATE` , `DELETE` and `OPTIONS` HTTP methods.
+
+
+
 ## Usage
 
 The following showcases some of the functionality of the Pokédex.
 
 
 
-### Routes & URL Queries
+### URL Queries
 
 Some example of URL based queries include:
+
+
 
 #### Full Text Search
 
@@ -170,7 +184,7 @@ This can accept regular expressions too!
 
 
 
-#### Filtering and Concatination 
+#### Filtering 
 
 You can use any combination of the above to filter your data using the concatination operator `&`.
 
@@ -179,6 +193,33 @@ You can use any combination of the above to filter your data using the concatina
   
 
 - **Filter Pokemon based on an non exclusive type `Physic`** and `spawn_chance` greater than or eqal to 3: `http://localhost/pokemon?type_like=Psychic&spawn_chance_gte=3`
+
+
+
+## Built in Routes
+
+The following routes (endpoints) are preconfigured in the `routes.json` file
+
+- `/pokemon/` - 
+  - Allows you to perform full text search on all fields within the database.
+
+- `/pokemon/id/`**:id** -
+  - Enables you to search for a Pokémon by their **id**
+-  `/pokemon/name/`**:name** -> /pokemon?name=:name
+  - Enables you to Find a pokemon based on their **name** 
+-  `/pokemon/type/`**:type** -> /pokemon?type_like=:type
+  - Enables you to Search for pokemon based on their **type** 
+
+
+
+## Resources
+
+
+
+JSON Sever Documentaion : JSON Server Documentation: [link](https://github.com/typicode/json-server)
+
+
+
 
 
 
