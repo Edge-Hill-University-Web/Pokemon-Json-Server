@@ -1,4 +1,17 @@
 {
+
+  "trainers": [
+    {
+        "id" : "001",
+        "name": "Dan",
+        "route": "4"
+    },
+    {
+        "id" : "002",
+        "name": "Harley",
+        "route": "3"
+    }
+  ],
     "pokemon": [{
       "id": 1,
       "num": "001",
